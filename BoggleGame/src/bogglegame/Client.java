@@ -14,17 +14,17 @@ import java.net.UnknownHostException;
  * @author austi
  */
 public class Client {
+
     OutputHandler output;
     UIWindow window;
-    
-    public Client(){
+
+    public Client() {
         window = new UIWindow(this);
-        try{
-        Socket socket = new Socket("ec2-34-224-216-23.compute-1.amazonaws.com",8989);
-        output = new OutputHandler(socket);
-        InputHandler input = new InputHandler(this,socket);
-        }
-        catch(IOException e){
+        try {
+            Socket socket = new Socket("ec2-34-224-216-23.compute-1.amazonaws.com", 8989);
+            output = new OutputHandler(socket);
+            InputHandler input = new InputHandler(this, socket);
+        } catch (IOException e) {
             window.couldNotConnect();
         }
         sendLogin();
@@ -54,7 +54,11 @@ public class Client {
     }
 
     void loginMessage(String loginMessage) {
-        receivedChat("",loginMessage);
+        receivedChat("", loginMessage);
     }
-    
+
+    void sendPlay() {
+        output.sendPlay();
+    }
+
 }

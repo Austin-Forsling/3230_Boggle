@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class OutputHandler {
 
     PrintWriter outPrint;
-    String groupName = "Boggle_Of_Epicness";
+    final String groupName = "Boggle_Of_Epicness";
 
     OutputHandler(Socket inSocket) {
         Socket socket = inSocket;
@@ -35,10 +35,10 @@ public class OutputHandler {
         JSONObject innerChat = new JSONObject();
         try {
             chat.put("type", "application");
-            innerChat.put("module",groupName);
-            innerChat.put("action","CHAT");
+            innerChat.put("module", groupName);
+            innerChat.put("action", "CHAT");
             innerChat.put("chatMessage", inputString);
-            chat.put("message",innerChat);
+            chat.put("message", innerChat);
             outPrint.println(chat.toString());
             outPrint.flush();
         } catch (JSONException e) {
@@ -49,14 +49,18 @@ public class OutputHandler {
 
     void sendChat(String inputString, String username) {
         JSONObject chat = new JSONObject();
+        JSONObject innerChat = new JSONObject();
         try {
-            chat.put("type", "chat");
-            chat.put("message", inputString);
-            chat.put("username", username);
+            chat.put("type", "application");
+            innerChat.put("module", groupName);
+            innerChat.put("action", "CHAT");
+            innerChat.put("chatMessage", inputString);
+            innerChat.put("username", username);
+            chat.put("message", innerChat);
             outPrint.println(chat.toString());
             outPrint.flush();
         } catch (JSONException e) {
-            //Shouldn't get here, JSON shouldn't break.
+            //shouldn't get here, JSON shouldn't break.
         }
     }
 
@@ -73,6 +77,22 @@ public class OutputHandler {
         } catch (JSONException e) {
             e.printStackTrace();
             //Since the JSON object is being built here, there shouldn't be any issues with it
+        }
+    }
+
+    void sendPlay() {
+        JSONObject play = new JSONObject();
+        JSONObject innerPlay = new JSONObject();
+        try {
+            play.put("type", "application");
+            innerPlay.put("application", groupName);
+            innerPlay.put("action", "PLAY");
+            play.put("message", innerPlay);
+            outPrint.println(play.toString());
+            outPrint.flush();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            //There shouldn't be an issue with the JSON
         }
     }
 
