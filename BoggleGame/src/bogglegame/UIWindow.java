@@ -484,7 +484,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard5ActionPerformed
         if (activeButtons[5] == 1) {
             boardClicked(5);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 5) {
             boardUnclicked(5);
         }
     }//GEN-LAST:event_bBoard5ActionPerformed
@@ -501,7 +501,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard1ActionPerformed
         if (activeButtons[1] == 1) {
             boardClicked(1);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 1) {
             boardUnclicked(1);
         }
     }//GEN-LAST:event_bBoard1ActionPerformed
@@ -509,7 +509,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard2ActionPerformed
         if (activeButtons[2] == 1) {
             boardClicked(2);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 2) {
             boardUnclicked(2);
         }
     }//GEN-LAST:event_bBoard2ActionPerformed
@@ -517,7 +517,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard3ActionPerformed
         if (activeButtons[3] == 1) {
             boardClicked(3);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 3) {
             boardUnclicked(3);
         }
     }//GEN-LAST:event_bBoard3ActionPerformed
@@ -525,7 +525,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard4ActionPerformed
         if (activeButtons[4] == 1) {
             boardClicked(4);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 4) {
             boardUnclicked(4);
         }
     }//GEN-LAST:event_bBoard4ActionPerformed
@@ -533,7 +533,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard6ActionPerformed
         if (activeButtons[6] == 1) {
             boardClicked(6);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 6) {
             boardUnclicked(6);
         }
     }//GEN-LAST:event_bBoard6ActionPerformed
@@ -541,7 +541,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard7ActionPerformed
         if (activeButtons[7] == 1) {
             boardClicked(7);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 7) {
             boardUnclicked(7);
         }
     }//GEN-LAST:event_bBoard7ActionPerformed
@@ -549,7 +549,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard8ActionPerformed
         if (activeButtons[8] == 1) {
             boardClicked(8);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 8) {
             boardUnclicked(8);
         }
     }//GEN-LAST:event_bBoard8ActionPerformed
@@ -557,7 +557,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard9ActionPerformed
         if (activeButtons[9] == 1) {
             boardClicked(9);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 9) {
             boardUnclicked(9);
         }
     }//GEN-LAST:event_bBoard9ActionPerformed
@@ -565,7 +565,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard10ActionPerformed
         if (activeButtons[10] == 1) {
             boardClicked(10);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 10) {
             boardUnclicked(10);
         }
     }//GEN-LAST:event_bBoard10ActionPerformed
@@ -573,7 +573,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard11ActionPerformed
         if (activeButtons[11] == 1) {
             boardClicked(11);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 11) {
             boardUnclicked(11);
         }
     }//GEN-LAST:event_bBoard11ActionPerformed
@@ -581,7 +581,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard12ActionPerformed
         if (activeButtons[12] == 1) {
             boardClicked(12);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 12) {
             boardUnclicked(12);
         }
     }//GEN-LAST:event_bBoard12ActionPerformed
@@ -589,7 +589,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard13ActionPerformed
         if (activeButtons[13] == 1) {
             boardClicked(13);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 13) {
             boardUnclicked(13);
         }
     }//GEN-LAST:event_bBoard13ActionPerformed
@@ -597,7 +597,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard14ActionPerformed
         if (activeButtons[14] == 1) {
             boardClicked(14);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 14) {
             boardUnclicked(14);
         }
     }//GEN-LAST:event_bBoard14ActionPerformed
@@ -605,7 +605,7 @@ public class UIWindow extends javax.swing.JFrame {
     private void bBoard15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard15ActionPerformed
         if (activeButtons[15] == 1) {
             boardClicked(15);
-        } else if (lastClicked == 0) {
+        } else if (lastClicked == 15) {
             boardUnclicked(15);
         }
     }//GEN-LAST:event_bBoard15ActionPerformed
