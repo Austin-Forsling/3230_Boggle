@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class UIWindow extends javax.swing.JFrame {
 
-    Client parent;
-    javax.swing.JButton[] fullBoard;
+    private Client parent;
+    private javax.swing.JButton[] fullBoard;
 
     /**
      * Creates new form NewJFrame
@@ -443,6 +443,7 @@ public class UIWindow extends javax.swing.JFrame {
     void writeBoard(char[] charArray){
         for(int i = 0; i < charArray.length; i++){
             fullBoard[i].setText(Character.toString(charArray[i]));
+            fullBoard[i].repaint();
         }
     }
 }

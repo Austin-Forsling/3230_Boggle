@@ -8,6 +8,8 @@ package bogglegame;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 /**
  *
@@ -15,8 +17,8 @@ import java.net.UnknownHostException;
  */
 public class Client {
 
-    OutputHandler output;
-    UIWindow window;
+    private OutputHandler output;
+    private UIWindow window;
 
     public Client() {
         window = new UIWindow(this);
@@ -61,4 +63,17 @@ public class Client {
         output.sendPlay();
     }
 
+    void receivedStartGame(JSONArray gameBoard) {
+        char[] gameBoardArray = new char[gameBoard.length()];
+        for(int i = 0; i < gameBoardArray.length; i++){
+            try{
+            String boardString = gameBoard.getString(i);
+            char boardChar = boardString.charAt(0);
+            gameBoardArray[i] = boardChar;
+            } catch (JSONException e){
+                //If the JSON received from the server is broken, there isn't much to be done.
+            }
+        }
+        window.writeBoard(gameBoardArray);
+    }
 }

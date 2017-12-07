@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import org.json.JSONArray;
 import org.json.JSONException;
 
 import org.json.JSONObject;
@@ -19,8 +20,8 @@ import org.json.JSONObject;
  */
 class InputHandler implements Runnable {
 
-    Socket socket;
-    Client parent;
+    private Socket socket;
+    private Client parent;
 
     public InputHandler(Client inClient, Socket inSocket) {
         parent = inClient;
@@ -48,8 +49,13 @@ class InputHandler implements Runnable {
                         case ("CHAT"):
                             parent.receivedChat(innerMessage.optString("username"), innerMessage.optString("chatMessage"));
                             break;
+                        case ("STARTGAME"):
+                            JSONArray gameBoard = innerMessage.getJSONArray("board");
+                            parent.receivedStartGame(gameBoard);
+                            break;
                     }
                 } catch (JSONException e) {
+                    e.printStackTrace();
                     //Shouldn't get here, but there isn't anything I can do if we do get here.
                 }
                 break;
@@ -63,7 +69,7 @@ class InputHandler implements Runnable {
             while (true) {
                 try {
                     JSONObject fromServer = new JSONObject(inRead.readLine());
-                    System.out.println("Read something");
+                    System.out.println("Read:");
                     translateJSON(fromServer);
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
