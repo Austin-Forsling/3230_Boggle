@@ -8,6 +8,7 @@ package bogglegame;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -101,6 +102,23 @@ public class OutputHandler {
         } catch (JSONException e) {
             e.printStackTrace();
             //There shouldn't be an issue with the JSON
+        }
+    }
+
+    void sendGuess(int[] currentGuess) {
+        JSONObject guess = new JSONObject();
+        JSONObject innerGuess = new JSONObject();
+        try{
+            JSONArray guessArray = new JSONArray(currentGuess);
+            guess.put("type","application");
+            innerGuess.put("module", groupName);
+            innerGuess.put("action", "GUESS");
+            innerGuess.put("positions", guessArray);
+            guess.put("message", innerGuess);
+            send(guess);
+        } catch (JSONException e){
+            e.printStackTrace();
+            //Shouldn't get here, currentGuess array should be clean to get to this point.
         }
     }
 

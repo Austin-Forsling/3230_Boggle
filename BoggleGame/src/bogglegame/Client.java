@@ -88,4 +88,17 @@ public class Client {
         window.writeBoard(gameBoardArray);
         window.startGame();
     }
+
+    void sendGuess(int[] currentGuess) {
+        //TODO: check for word legality before passing to output.
+        output.sendGuess(currentGuess);
+    }
+
+    void receivedWord(String optString) {
+        window.markGuessed(optString);
+    }
+
+    void receivedPoints(int optInt) {
+        window.updateScore(optInt);
+    }
 }

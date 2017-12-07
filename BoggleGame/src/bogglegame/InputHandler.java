@@ -58,6 +58,12 @@ class InputHandler implements Runnable {
                             JSONArray gameBoard = innerMessage.getJSONArray("board");
                             parent.receivedStartGame(gameBoard);
                             break;
+                        case ("WORD"):
+                            parent.receivedWord(innerMessage.optString("word"));
+                            break;
+                        case ("POINTS"):
+                            parent.receivedPoints(innerMessage.optInt("points"));
+                            break;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
