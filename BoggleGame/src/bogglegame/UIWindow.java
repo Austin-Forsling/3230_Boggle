@@ -5,6 +5,7 @@
  */
 package bogglegame;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +21,7 @@ public class UIWindow extends javax.swing.JFrame {
     private final javax.swing.JButton[] fullBoard;
     
     //used to deactivate buttons to prevent duplicate clicks.
-    private int[] activeButtons = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    private final int[] activeButtons = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
     
     //the array of positions that will be sent to server
     private int[] currentGuess = new int[0];
@@ -42,6 +43,7 @@ public class UIWindow extends javax.swing.JFrame {
     public UIWindow(Client inClient) {
         parent = inClient;
         initComponents();
+        gameStateLabel.setText("");
         fullBoard = new javax.swing.JButton[16];
         fullBoard[0] = bBoard0;
         fullBoard[1] = bBoard1;
@@ -104,6 +106,7 @@ public class UIWindow extends javax.swing.JFrame {
         bBoard15 = new javax.swing.JButton();
         scoreLabel = new javax.swing.JLabel();
         scoreNumber = new javax.swing.JLabel();
+        gameStateLabel = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -320,6 +323,8 @@ public class UIWindow extends javax.swing.JFrame {
 
         scoreNumber.setText("0");
 
+        gameStateLabel.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -369,11 +374,16 @@ public class UIWindow extends javax.swing.JFrame {
                                         .addGap(15, 15, 15)
                                         .addComponent(bBoard11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(bBoard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(15, 15, 15)
-                                        .addComponent(bBoard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(15, 15, 15)
-                                        .addComponent(bBoard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(bBoard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(15, 15, 15)
+                                                .addComponent(bBoard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(15, 15, 15)
+                                                .addComponent(bBoard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(68, 68, 68)
+                                                .addComponent(gameStateLabel)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(scoreLabel)
@@ -381,10 +391,6 @@ public class UIWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(107, 107, 107)
-                                .addComponent(sendGuessButton)
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,12 +400,16 @@ public class UIWindow extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(guessingLabel)
                                             .addComponent(guessedLabel))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(72, 72, 72)
+                                .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 68, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(78, Short.MAX_VALUE))))
+                        .addGap(97, 97, 97)
+                        .addComponent(sendGuessButton)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(chatLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -412,7 +422,8 @@ public class UIWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gameLabel)
                     .addComponent(guessedLabel)
-                    .addComponent(scoreLabel))
+                    .addComponent(scoreLabel)
+                    .addComponent(gameStateLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -448,7 +459,7 @@ public class UIWindow extends javax.swing.JFrame {
                     .addComponent(chatLabel)
                     .addComponent(guessingLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -456,8 +467,9 @@ public class UIWindow extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sendGuessButton))
-                    .addComponent(playButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sendGuessButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(50, 50, 50))
@@ -473,7 +485,9 @@ public class UIWindow extends javax.swing.JFrame {
     //The play button now sends a play message to the server
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
         parent.sendPlay();        
-        guessedWordsWindow.setText("");       
+        guessedWordsWindow.setText(""); 
+        gameStateLabel.setText("Game will start soon.");
+        scoreNumber.setText("0");
     }//GEN-LAST:event_playButtonActionPerformed
 
     //sends the currentGuess Array to the client to be checked and passed on, then clears the array.
@@ -657,6 +671,7 @@ public class UIWindow extends javax.swing.JFrame {
     private javax.swing.JTextField chatTextField;
     private javax.swing.JTextArea chatWindow;
     private javax.swing.JLabel gameLabel;
+    private javax.swing.JLabel gameStateLabel;
     private javax.swing.JTextArea guessWindow;
     private javax.swing.JLabel guessedLabel;
     private javax.swing.JTextArea guessedWordsWindow;
@@ -708,11 +723,14 @@ public class UIWindow extends javax.swing.JFrame {
         scoreNumber.setText("0");
         score = 0;
         writeBoard(gameBoardArray);
+        gameStateLabel.setText("Play!");
     }
 
     //used to lock the board's buttons
     void endGame() {
         gameRunning = 0;
+        clearBoard();
+        gameStateLabel.setText("Game Over!");
     }
 
     //When a button is clicked, add the possition to the guess array
@@ -771,6 +789,13 @@ public class UIWindow extends javax.swing.JFrame {
     private void resetActiveButtons() {
         for(int i = 0; i < activeButtons.length; i++){
             activeButtons[i] = 1;
+        }
+    }
+
+    private void clearBoard() {
+        for (JButton button : fullBoard) {
+            button.setText("");
+            button.repaint();
         }
     }
 }

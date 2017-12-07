@@ -7,7 +7,6 @@ package bogglegame;
 
 import java.io.IOException;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import org.json.JSONArray;
 import org.json.JSONException;
 
