@@ -704,11 +704,16 @@ public class UIWindow extends javax.swing.JFrame {
         return login;
     }
 
-    //adds strings onto the chat box.
+    //adds strings into the chat box.
     void updateChat(String username, String chatMessage) {
         chatWindow.append(username + ": " + chatMessage + "\n");
     }
-
+    
+    //adds strings into the chat box without a username or :
+    void updateChat(String chatMessage) {
+        chatWindow.append(chatMessage);
+    }
+    
     //Fills in characters onto the buttons for the boggle board.
     private void writeBoard(char[] charArray) {
         for (int i = 0; i < charArray.length; i++) {
@@ -799,7 +804,5 @@ public class UIWindow extends javax.swing.JFrame {
         }
     }
 
-    void updateChat(String optString) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 }

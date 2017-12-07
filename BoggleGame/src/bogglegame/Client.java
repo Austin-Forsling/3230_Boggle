@@ -54,9 +54,12 @@ public class Client {
     void receivedChat(String username, String chatMessage) {
         window.updateChat(username, chatMessage);
     }
+    
+    //sends chat string to UI
     void receivedChat(String chatMessage) {
         window.updateChat(chatMessage);
     }
+    
     //sends username to the output handler.
     private void sendLogin() {
         String login = window.getLogin();
