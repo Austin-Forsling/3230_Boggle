@@ -711,7 +711,7 @@ public class UIWindow extends javax.swing.JFrame {
     
     //adds strings into the chat box without a username or :
     void updateChat(String chatMessage) {
-        chatWindow.append(chatMessage);
+        chatWindow.append(chatMessage + "\n");
     }
     
     //Fills in characters onto the buttons for the boggle board.
