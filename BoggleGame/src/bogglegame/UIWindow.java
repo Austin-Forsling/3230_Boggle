@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 public class UIWindow extends javax.swing.JFrame {
 
     Client parent;
+    javax.swing.JButton[] fullBoard;
 
     /**
      * Creates new form NewJFrame
@@ -23,6 +24,23 @@ public class UIWindow extends javax.swing.JFrame {
     public UIWindow(Client inClient) {
         parent = inClient;
         initComponents();
+        fullBoard = new javax.swing.JButton[16];
+        fullBoard[0] = bBoard0;
+        fullBoard[1] = bBoard1;
+        fullBoard[2] = bBoard2;
+        fullBoard[3] = bBoard3;
+        fullBoard[4] = bBoard4;
+        fullBoard[5] = bBoard5;
+        fullBoard[6] = bBoard6;
+        fullBoard[7] = bBoard7;
+        fullBoard[8] = bBoard8;
+        fullBoard[9] = bBoard9;
+        fullBoard[10] = bBoard10;
+        fullBoard[11] = bBoard11;
+        fullBoard[12] = bBoard12;
+        fullBoard[13] = bBoard13;
+        fullBoard[14] = bBoard14;
+        fullBoard[15] = bBoard15;
     }
 
     /**
@@ -420,5 +438,11 @@ public class UIWindow extends javax.swing.JFrame {
 
     void updateChat(String username, String chatMessage) {
         chatWindow.append(username + ": " + chatMessage + "\n");
+    }
+    
+    void writeBoard(char[] charArray){
+        for(int i = 0; i < charArray.length; i++){
+            fullBoard[i].setText(Character.toString(charArray[i]));
+        }
     }
 }
