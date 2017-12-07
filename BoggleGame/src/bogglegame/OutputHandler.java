@@ -30,13 +30,15 @@ public class OutputHandler {
         }
     }
     
+    //actually sends the object to the server. Complete with a message for debuggin purposes.
     void send(JSONObject message){
-        System.out.println("Send:");
+        System.out.println("Sending:");
         System.out.println(message.toString());
         outPrint.println(message.toString());
         outPrint.flush();
     }
 
+    //builds a chat message.
     void sendChat(String inputString) {
         JSONObject chat = new JSONObject();
         JSONObject innerChat = new JSONObject();
@@ -53,6 +55,7 @@ public class OutputHandler {
 
     }
 
+    //builds a chat message with a target username, for whispering.
     void sendChat(String inputString, String username) {
         JSONObject chat = new JSONObject();
         JSONObject innerChat = new JSONObject();
@@ -69,6 +72,7 @@ public class OutputHandler {
         }
     }
 
+    //builds a login message.
     void sendLogin(String user) {
         JSONObject login = new JSONObject();
         JSONObject message = new JSONObject();
@@ -84,6 +88,7 @@ public class OutputHandler {
         }
     }
 
+    //builds a play message to start a game.
     void sendPlay() {
         JSONObject play = new JSONObject();
         JSONObject innerPlay = new JSONObject();
@@ -92,7 +97,6 @@ public class OutputHandler {
             innerPlay.put("module", groupName);
             innerPlay.put("action", "PLAY");
             play.put("message", innerPlay);
-            System.out.println(play.toString());
             send(play);
         } catch (JSONException e) {
             e.printStackTrace();

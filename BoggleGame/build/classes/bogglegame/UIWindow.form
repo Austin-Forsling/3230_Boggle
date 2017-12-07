@@ -314,6 +314,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard0ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard1">
       <Properties>
@@ -327,6 +330,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard2">
       <Properties>
@@ -340,6 +346,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard3">
       <Properties>
@@ -353,6 +362,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard4">
       <Properties>
@@ -366,6 +378,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard4ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard5">
       <Properties>
@@ -395,6 +410,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard6ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard7">
       <Properties>
@@ -408,6 +426,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard7ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard8">
       <Properties>
@@ -421,6 +442,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard8ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard9">
       <Properties>
@@ -434,6 +458,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard9ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard10">
       <Properties>
@@ -447,6 +474,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard10ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard11">
       <Properties>
@@ -460,6 +490,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard11ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard12">
       <Properties>
@@ -473,6 +506,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard12ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard13">
       <Properties>
@@ -486,6 +522,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard13ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard14">
       <Properties>
@@ -499,6 +538,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard14ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBoard15">
       <Properties>
@@ -512,6 +554,9 @@
           <Dimension value="[80, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBoard15ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

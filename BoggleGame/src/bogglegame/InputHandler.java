@@ -20,7 +20,10 @@ import org.json.JSONObject;
  */
 class InputHandler implements Runnable {
 
+    //Socket to connect to server
     private Socket socket;
+    
+    //Parent client, which will handle the translated JSON
     private Client parent;
 
     public InputHandler(Client inClient, Socket inSocket) {
@@ -29,10 +32,12 @@ class InputHandler implements Runnable {
         runThread();
     }
 
+    //runs a thread of this to prevent blocking the rest of the program.
     private void runThread() {
         new Thread(this).start();
     }
 
+    //uses switches on a received JSON to figure out what it's trying to do.
     private void translateJSON(JSONObject message) {
         System.out.println(message.toString());
         switch (message.optString("type")) {
@@ -68,6 +73,7 @@ class InputHandler implements Runnable {
             BufferedReader inRead = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while (true) {
                 try {
+                    //blocks until input is received.
                     JSONObject fromServer = new JSONObject(inRead.readLine());
                     System.out.println("Read:");
                     translateJSON(fromServer);

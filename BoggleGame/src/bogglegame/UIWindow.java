@@ -5,6 +5,7 @@
  */
 package bogglegame;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,8 +14,26 @@ import javax.swing.JOptionPane;
  */
 public class UIWindow extends javax.swing.JFrame {
 
-    private Client parent;
-    private javax.swing.JButton[] fullBoard;
+    //The actual client, used as a middleman between UI and output
+    private final Client parent;
+    
+    //array containing all the boggle game board buttons for easy access.
+    private final javax.swing.JButton[] fullBoard;
+    
+    //used to deactivate buttons to prevent duplicate clicks.
+    private int[] activeButtons = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    
+    //the array of positions that will be sent to server
+    private int[] currentGuess = new int[0];
+    
+    //the word made by the current guess array, so the user can see what they've made.
+    private char[] currentGuessWord = new char[0];
+    
+    //Checks if a boggle game is in progress. Switched to 1 when starts, back to 0 when ends.
+    private int gameRunning = 0;
+    
+    //keeps track of the most recently clicked button, to avoid people deleting letters in the middle of words.
+    private int lastClicked = -1;
 
     /**
      * Creates new form NewJFrame
@@ -149,22 +168,47 @@ public class UIWindow extends javax.swing.JFrame {
         bBoard0.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard0.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard0.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard0ActionPerformed(evt);
+            }
+        });
 
         bBoard1.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard1.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard1.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard1ActionPerformed(evt);
+            }
+        });
 
         bBoard2.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard2.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard2.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard2ActionPerformed(evt);
+            }
+        });
 
         bBoard3.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard3.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard3.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard3ActionPerformed(evt);
+            }
+        });
 
         bBoard4.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard4.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard4.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard4ActionPerformed(evt);
+            }
+        });
 
         bBoard5.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard5.setMinimumSize(new java.awt.Dimension(80, 60));
@@ -178,42 +222,92 @@ public class UIWindow extends javax.swing.JFrame {
         bBoard6.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard6.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard6.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard6ActionPerformed(evt);
+            }
+        });
 
         bBoard7.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard7.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard7.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard7ActionPerformed(evt);
+            }
+        });
 
         bBoard8.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard8.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard8.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard8ActionPerformed(evt);
+            }
+        });
 
         bBoard9.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard9.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard9.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard9ActionPerformed(evt);
+            }
+        });
 
         bBoard10.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard10.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard10.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard10ActionPerformed(evt);
+            }
+        });
 
         bBoard11.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard11.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard11.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard11ActionPerformed(evt);
+            }
+        });
 
         bBoard12.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard12.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard12.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard12ActionPerformed(evt);
+            }
+        });
 
         bBoard13.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard13.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard13.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard13ActionPerformed(evt);
+            }
+        });
 
         bBoard14.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard14.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard14.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard14ActionPerformed(evt);
+            }
+        });
 
         bBoard15.setMaximumSize(new java.awt.Dimension(80, 60));
         bBoard15.setMinimumSize(new java.awt.Dimension(80, 60));
         bBoard15.setPreferredSize(new java.awt.Dimension(80, 60));
+        bBoard15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBoard15ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -355,25 +449,28 @@ public class UIWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void chatTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chatTextFieldActionPerformed
-        // TODO add your handling code here:
+        // Nothing, accidently made this when messing with window builder.
     }//GEN-LAST:event_chatTextFieldActionPerformed
 
+    //The play button now sends a play message to the server
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
         parent.sendPlay();
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void sendGuessButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendGuessButtonActionPerformed
-        // TODO add your handling code here:
+        // TODO send the guess array to the server
     }//GEN-LAST:event_sendGuessButtonActionPerformed
 
+    //Also sends play, specifically on click. Redundant.
     private void playButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseClicked
-        // TODO add your handling code here:
+        parent.sendPlay();
     }//GEN-LAST:event_playButtonMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // Nothing, accidently made this when messing with the window builder.
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //the send chat button.
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         chatTextField.selectAll();
         String inputString = chatTextField.getSelectedText();
@@ -381,9 +478,137 @@ public class UIWindow extends javax.swing.JFrame {
         chatTextField.setText(null);
     }//GEN-LAST:event_jButton1MouseClicked
 
+    /*the following actions are for when buttons on the board are clicked.
+    * Either clicks or unclicks buttons depending on when the buttons were clicked, if at all.
+    */
     private void bBoard5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard5ActionPerformed
-        // TODO add your handling code here:
+        if (activeButtons[5] == 1) {
+            boardClicked(5);
+        } else if (lastClicked == 0) {
+            boardUnclicked(5);
+        }
     }//GEN-LAST:event_bBoard5ActionPerformed
+
+    private void bBoard0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard0ActionPerformed
+        if (activeButtons[0] == 1) {
+            boardClicked(0);
+        } else if (lastClicked == 0) {
+            boardUnclicked(0);
+        }
+
+    }//GEN-LAST:event_bBoard0ActionPerformed
+
+    private void bBoard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard1ActionPerformed
+        if (activeButtons[1] == 1) {
+            boardClicked(1);
+        } else if (lastClicked == 0) {
+            boardUnclicked(1);
+        }
+    }//GEN-LAST:event_bBoard1ActionPerformed
+
+    private void bBoard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard2ActionPerformed
+        if (activeButtons[2] == 1) {
+            boardClicked(2);
+        } else if (lastClicked == 0) {
+            boardUnclicked(2);
+        }
+    }//GEN-LAST:event_bBoard2ActionPerformed
+
+    private void bBoard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard3ActionPerformed
+        if (activeButtons[3] == 1) {
+            boardClicked(3);
+        } else if (lastClicked == 0) {
+            boardUnclicked(3);
+        }
+    }//GEN-LAST:event_bBoard3ActionPerformed
+
+    private void bBoard4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard4ActionPerformed
+        if (activeButtons[4] == 1) {
+            boardClicked(4);
+        } else if (lastClicked == 0) {
+            boardUnclicked(4);
+        }
+    }//GEN-LAST:event_bBoard4ActionPerformed
+
+    private void bBoard6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard6ActionPerformed
+        if (activeButtons[6] == 1) {
+            boardClicked(6);
+        } else if (lastClicked == 0) {
+            boardUnclicked(6);
+        }
+    }//GEN-LAST:event_bBoard6ActionPerformed
+
+    private void bBoard7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard7ActionPerformed
+        if (activeButtons[7] == 1) {
+            boardClicked(7);
+        } else if (lastClicked == 0) {
+            boardUnclicked(7);
+        }
+    }//GEN-LAST:event_bBoard7ActionPerformed
+
+    private void bBoard8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard8ActionPerformed
+        if (activeButtons[8] == 1) {
+            boardClicked(8);
+        } else if (lastClicked == 0) {
+            boardUnclicked(8);
+        }
+    }//GEN-LAST:event_bBoard8ActionPerformed
+
+    private void bBoard9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard9ActionPerformed
+        if (activeButtons[9] == 1) {
+            boardClicked(9);
+        } else if (lastClicked == 0) {
+            boardUnclicked(9);
+        }
+    }//GEN-LAST:event_bBoard9ActionPerformed
+
+    private void bBoard10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard10ActionPerformed
+        if (activeButtons[10] == 1) {
+            boardClicked(10);
+        } else if (lastClicked == 0) {
+            boardUnclicked(10);
+        }
+    }//GEN-LAST:event_bBoard10ActionPerformed
+
+    private void bBoard11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard11ActionPerformed
+        if (activeButtons[11] == 1) {
+            boardClicked(11);
+        } else if (lastClicked == 0) {
+            boardUnclicked(11);
+        }
+    }//GEN-LAST:event_bBoard11ActionPerformed
+
+    private void bBoard12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard12ActionPerformed
+        if (activeButtons[12] == 1) {
+            boardClicked(12);
+        } else if (lastClicked == 0) {
+            boardUnclicked(12);
+        }
+    }//GEN-LAST:event_bBoard12ActionPerformed
+
+    private void bBoard13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard13ActionPerformed
+        if (activeButtons[13] == 1) {
+            boardClicked(13);
+        } else if (lastClicked == 0) {
+            boardUnclicked(13);
+        }
+    }//GEN-LAST:event_bBoard13ActionPerformed
+
+    private void bBoard14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard14ActionPerformed
+        if (activeButtons[14] == 1) {
+            boardClicked(14);
+        } else if (lastClicked == 0) {
+            boardUnclicked(14);
+        }
+    }//GEN-LAST:event_bBoard14ActionPerformed
+
+    private void bBoard15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBoard15ActionPerformed
+        if (activeButtons[15] == 1) {
+            boardClicked(15);
+        } else if (lastClicked == 0) {
+            boardUnclicked(15);
+        }
+    }//GEN-LAST:event_bBoard15ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -426,24 +651,74 @@ public class UIWindow extends javax.swing.JFrame {
         // TODO: Make new window saying "server can't be reached", close UI on close.
     }
 
+    //ask user for username
     String getLogin() {
         String login = JOptionPane.showInputDialog("Please select a username:");
         return login;
     }
 
+    //if username fails, asks the user to retry with a different username.
     String retryLogin() {
         String login = JOptionPane.showInputDialog("Username unavailable, please try again:");
         return login;
     }
 
+    //adds strings onto the chat box.
     void updateChat(String username, String chatMessage) {
         chatWindow.append(username + ": " + chatMessage + "\n");
     }
-    
-    void writeBoard(char[] charArray){
-        for(int i = 0; i < charArray.length; i++){
+
+    //Fills in characters onto the buttons for the boggle board.
+    void writeBoard(char[] charArray) {
+        for (int i = 0; i < charArray.length; i++) {
             fullBoard[i].setText(Character.toString(charArray[i]));
             fullBoard[i].repaint();
         }
+    }
+
+    //used to unlock the board's buttons
+    void startGame() {
+        gameRunning = 1;
+    }
+
+    //used to lock the board's buttons
+    void endGame() {
+        gameRunning = 0;
+    }
+
+    //When a button is clicked, add the possition to the guess array
+    private void boardClicked(int button) {
+        if (gameRunning == 1) {
+            int[] tempArray = new int[currentGuess.length + 1];
+            System.arraycopy(currentGuess, 0, tempArray, 0, currentGuess.length);
+            tempArray[tempArray.length - 1] = button;
+            currentGuess = tempArray;
+            lastClicked = button;
+            activeButtons[button] = 0;
+            updateGuessWord(fullBoard[button], 1);
+            System.out.println(currentGuess[currentGuess.length-1]);
+        }
+    }
+
+    //When a button is clicked after it's already been clicked, remove the letter from the word guess if that button was the last clicked.
+    private void boardUnclicked(int button) {
+        if (gameRunning == 1) {
+            int[] tempArray = new int[currentGuess.length - 1];
+            System.arraycopy(currentGuess, 0, tempArray, 0, tempArray.length);
+            currentGuess = tempArray;
+            try {
+                lastClicked = currentGuess[currentGuess.length - 1];
+            } catch (ArrayIndexOutOfBoundsException e) {
+                lastClicked = -1;
+                //this should catch the player removing the only item in the array.
+            }
+            activeButtons[button] = 1;
+            updateGuessWord(fullBoard[button], 0);
+            System.out.println(currentGuess[currentGuess.length-1]);
+        }
+    }
+
+    private void updateGuessWord(JButton jButton, int i) {
+        
     }
 }
