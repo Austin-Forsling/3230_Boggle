@@ -60,7 +60,6 @@ class InputHandler implements Runnable {
                 if (inRead.ready()) {
                     try {
                         JSONObject fromServer = new JSONObject(inRead.readLine());
-                        System.out.println("Read something");
                         translateJSON(fromServer);
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();

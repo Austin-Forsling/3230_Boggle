@@ -34,15 +34,15 @@ public class UIWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        boggleBoard = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        chatWindow = new javax.swing.JTextArea();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        guessedWords = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        currentGuess = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -52,13 +52,15 @@ public class UIWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        boggleBoard.setColumns(20);
+        boggleBoard.setRows(5);
+        boggleBoard.setEditable(false);
+        jScrollPane1.setViewportView(boggleBoard);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        chatWindow.setColumns(20);
+        chatWindow.setRows(5);
+        chatWindow.setEditable(false);
+        jScrollPane2.setViewportView(chatWindow);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,13 +80,15 @@ public class UIWindow extends javax.swing.JFrame {
             }
         });
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        guessedWords.setColumns(20);
+        guessedWords.setRows(5);
+        guessedWords.setEditable(false);
+        jScrollPane3.setViewportView(guessedWords);
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        currentGuess.setColumns(20);
+        currentGuess.setRows(5);
+        currentGuess.setEditable(false);
+        jScrollPane4.setViewportView(currentGuess);
 
         jLabel1.setText("Chat");
 
@@ -225,6 +229,10 @@ public class UIWindow extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea boggleBoard;
+    private javax.swing.JTextArea chatWindow;
+    private javax.swing.JTextArea currentGuess;
+    private javax.swing.JTextArea guessedWords;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -236,10 +244,6 @@ public class UIWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 

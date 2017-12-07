@@ -49,7 +49,6 @@ public class OutputHandler {
             message.put("username",user);
             login.put("type","login");
             login.put("message",message);
-            System.out.println(login.toString());
             outPrint.println(login.toString());
             outPrint.flush();
         }
