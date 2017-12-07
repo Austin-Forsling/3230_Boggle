@@ -22,7 +22,7 @@ class InputHandler implements Runnable {
 
     //Socket to connect to server
     private Socket socket;
-    
+
     //Parent client, which will handle the translated JSON
     private Client parent;
 
@@ -42,7 +42,7 @@ class InputHandler implements Runnable {
         System.out.println(message.toString());
         switch (message.optString("type")) {
             case ("acknowledge"):
-                parent.loginMessage(message.optString("message"));
+                parent.receivedChat(message.optString("message"));
                 break;
             case ("DENY"):
                 parent.denyLogin();
@@ -52,7 +52,11 @@ class InputHandler implements Runnable {
                     JSONObject innerMessage = message.getJSONObject("message");
                     switch (innerMessage.optString("action")) {
                         case ("CHAT"):
-                            parent.receivedChat(innerMessage.optString("username"), innerMessage.optString("chatMessage"));
+                            if (innerMessage.optString("username").equals("")) {
+                                parent.receivedChat(innerMessage.optString("chatMessage"));
+                            } else {
+                                parent.receivedChat(innerMessage.optString("username"), innerMessage.optString("chatMessage"));
+                            }
                             break;
                         case ("STARTGAME"):
                             JSONArray gameBoard = innerMessage.getJSONArray("board");
@@ -64,7 +68,7 @@ class InputHandler implements Runnable {
                         case ("POINTS"):
                             parent.receivedPoints(innerMessage.optInt("points"));
                             break;
-                        case("GAMEEND"):
+                        case ("GAMEEND"):
                             parent.receivedEndGame();
                             break;
                     }

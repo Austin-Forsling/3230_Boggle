@@ -54,17 +54,13 @@ public class Client {
     void receivedChat(String username, String chatMessage) {
         window.updateChat(username, chatMessage);
     }
-
+    void receivedChat(String chatMessage) {
+        window.updateChat(chatMessage);
+    }
     //sends username to the output handler.
     private void sendLogin() {
         String login = window.getLogin();
         output.sendLogin(login);
-    }
-
-    //posts the successful login message.
-    //TODO: overload receivedChat to accept single string and remove ':'
-    void loginMessage(String loginMessage) {
-        receivedChat("", loginMessage);
     }
 
     //passes play message to output handler to start a new game.
@@ -103,4 +99,6 @@ public class Client {
     void receivedEndGame() {
         window.endGame();
     }
+
+    
 }

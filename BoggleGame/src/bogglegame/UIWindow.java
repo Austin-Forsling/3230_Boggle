@@ -798,4 +798,8 @@ public class UIWindow extends javax.swing.JFrame {
             button.repaint();
         }
     }
+
+    void updateChat(String optString) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
