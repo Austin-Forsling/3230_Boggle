@@ -461,9 +461,8 @@ public class UIWindow extends javax.swing.JFrame {
         // TODO send the guess array to the server
     }//GEN-LAST:event_sendGuessButtonActionPerformed
 
-    //Also sends play, specifically on click. Redundant.
     private void playButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseClicked
-        parent.sendPlay();
+        //Nothing, using ActionPerformed instead.
     }//GEN-LAST:event_playButtonMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
