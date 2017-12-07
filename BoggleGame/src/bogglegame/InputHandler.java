@@ -64,6 +64,9 @@ class InputHandler implements Runnable {
                         case ("POINTS"):
                             parent.receivedPoints(innerMessage.optInt("points"));
                             break;
+                        case("GAMEEND"):
+                            parent.receivedEndGame();
+                            break;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

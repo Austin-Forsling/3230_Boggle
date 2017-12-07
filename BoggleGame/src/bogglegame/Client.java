@@ -101,4 +101,8 @@ public class Client {
     void receivedPoints(int optInt) {
         window.updateScore(optInt);
     }
+
+    void receivedEndGame() {
+        window.endGame();
+    }
 }

@@ -706,6 +706,7 @@ public class UIWindow extends javax.swing.JFrame {
         gameRunning = 1;
         scoreNumber.setText("0");
         score = 0;
+        guessWindow.setText("");
     }
 
     //used to lock the board's buttons
