@@ -85,8 +85,7 @@ public class Client {
                 //If the JSON received from the server is broken, there isn't much to be done.
             }
         }
-        window.writeBoard(gameBoardArray);
-        window.startGame();
+        window.startGame(gameBoardArray);
     }
 
     void sendGuess(int[] currentGuess) {

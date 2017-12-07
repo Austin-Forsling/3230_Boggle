@@ -472,7 +472,8 @@ public class UIWindow extends javax.swing.JFrame {
 
     //The play button now sends a play message to the server
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        parent.sendPlay();
+        parent.sendPlay();        
+        guessedWordsWindow.setText("");       
     }//GEN-LAST:event_playButtonActionPerformed
 
     //sends the currentGuess Array to the client to be checked and passed on, then clears the array.
@@ -694,7 +695,7 @@ public class UIWindow extends javax.swing.JFrame {
     }
 
     //Fills in characters onto the buttons for the boggle board.
-    void writeBoard(char[] charArray) {
+    private void writeBoard(char[] charArray) {
         for (int i = 0; i < charArray.length; i++) {
             fullBoard[i].setText(Character.toString(charArray[i]));
             fullBoard[i].repaint();
@@ -702,11 +703,11 @@ public class UIWindow extends javax.swing.JFrame {
     }
 
     //used to unlock the board's buttons
-    void startGame() {
+    void startGame(char[] gameBoardArray) {
         gameRunning = 1;
         scoreNumber.setText("0");
         score = 0;
-        guessWindow.setText("");
+        writeBoard(gameBoardArray);
     }
 
     //used to lock the board's buttons
