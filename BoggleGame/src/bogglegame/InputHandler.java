@@ -46,12 +46,7 @@ class InputHandler implements Runnable {
                     JSONObject innerMessage = message.getJSONObject("message");
                     switch (innerMessage.optString("action")) {
                         case ("CHAT"):
-                            if(innerMessage.optString("message") != ""){
-                                parent.receivedChat(innerMessage.optString("username"), innerMessage.optString("message"));
-                            }
-                            else{
-                                parent.receivedChat(innerMessage.optString("username"), innerMessage.optString("chatMessage"));
-                            }
+                            parent.receivedChat(innerMessage.optString("username"), innerMessage.optString("chatMessage"));
                             break;
                     }
                 } catch (JSONException e) {

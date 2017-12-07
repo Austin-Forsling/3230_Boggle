@@ -37,7 +37,7 @@ public class OutputHandler {
             chat.put("type", "application");
             innerChat.put("module",groupName);
             innerChat.put("action","CHAT");
-            innerChat.put("message", inputString);
+            innerChat.put("chatMessage", inputString);
             chat.put("message",innerChat);
             outPrint.println(chat.toString());
             outPrint.flush();
