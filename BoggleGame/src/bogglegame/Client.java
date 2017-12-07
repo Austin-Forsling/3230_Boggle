@@ -45,12 +45,16 @@ public class Client {
     }
 
     void receivedChat(String username, String chatMessage) {
-        UIWindow.updateChat(username, chatMessage);
+        window.updateChat(username, chatMessage);
     }
 
     private void sendLogin() {
         String login = window.getLogin();
         output.sendLogin(login);
+    }
+
+    void loginMessage(String loginMessage) {
+        receivedChat("",loginMessage);
     }
     
 }

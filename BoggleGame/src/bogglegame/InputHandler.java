@@ -36,18 +36,27 @@ class InputHandler implements Runnable {
         System.out.println(message.toString());
         switch (message.optString("type")) {
             case ("acknowledge"):
+                parent.loginMessage(message.optString("message"));
                 break;
             case ("DENY"):
                 parent.denyLogin();
                 break;
-            case ("CHAT"):
-                parent.receivedChat(message.optString("username"), message.optString("message"));
-                break;
-            case ("WORD"):
-                break;
-            case ("GAMESTART"):
-                break;
-            case ("GAMEEND"):
+            case ("application"):
+                try {
+                    JSONObject innerMessage = message.getJSONObject("message");
+                    switch (innerMessage.optString("action")) {
+                        case ("CHAT"):
+                            if(innerMessage.optString("message") != ""){
+                                parent.receivedChat(innerMessage.optString("username"), innerMessage.optString("message"));
+                            }
+                            else{
+                                parent.receivedChat(innerMessage.optString("username"), innerMessage.optString("chatMessage"));
+                            }
+                            break;
+                    }
+                } catch (JSONException e) {
+                    //Shouldn't get here, but there isn't anything I can do if we do get here.
+                }
                 break;
         }
     }
@@ -57,15 +66,15 @@ class InputHandler implements Runnable {
         try {
             BufferedReader inRead = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while (true) {
-                if (inRead.ready()) {
-                    try {
-                        JSONObject fromServer = new JSONObject(inRead.readLine());
-                        translateJSON(fromServer);
-                    } catch (IOException | JSONException e) {
-                        e.printStackTrace();
-                        //not much that can be done here, if it breaks the connection has been lost.
-                    }
+                try {
+                    JSONObject fromServer = new JSONObject(inRead.readLine());
+                    System.out.println("Read something");
+                    translateJSON(fromServer);
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                    //not much that can be done here, if it breaks the connection has been lost.
                 }
+
             }
         } catch (IOException e) {
             e.printStackTrace();

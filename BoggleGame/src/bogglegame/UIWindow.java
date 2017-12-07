@@ -261,7 +261,7 @@ public class UIWindow extends javax.swing.JFrame {
         return login;
     }
     
-    static void updateChat(String username, String chatMessage) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void updateChat(String username, String chatMessage) {
+        chatWindow.append(username + ": " + chatMessage + "\n");
     }
 }
