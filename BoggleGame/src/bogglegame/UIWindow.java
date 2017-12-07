@@ -26,9 +26,6 @@ public class UIWindow extends javax.swing.JFrame {
     //the array of positions that will be sent to server
     private int[] currentGuess = new int[0];
     
-    //the word made by the current guess array, so the user can see what they've made.
-    private char[] currentGuessWord = new char[0];
-    
     //Checks if a boggle game is in progress. Switched to 1 when starts, back to 0 when ends.
     private int gameRunning = 0;
     
@@ -694,8 +691,7 @@ public class UIWindow extends javax.swing.JFrame {
             currentGuess = tempArray;
             lastClicked = button;
             activeButtons[button] = 0;
-            updateGuessWord(fullBoard[button], 1);
-            System.out.println(currentGuess[currentGuess.length-1]);
+            updateGuessWord();
         }
     }
 
@@ -712,12 +708,17 @@ public class UIWindow extends javax.swing.JFrame {
                 //this should catch the player removing the only item in the array.
             }
             activeButtons[button] = 1;
-            updateGuessWord(fullBoard[button], 0);
-            System.out.println(currentGuess[currentGuess.length-1]);
+            updateGuessWord();
         }
     }
 
-    private void updateGuessWord(JButton jButton, int i) {
-        
+    private void updateGuessWord() {
+        String guessWord;
+        char[] guessCharList = new char[currentGuess.length];
+        for(int i = 0; i < guessCharList.length; i++){
+            guessCharList[i] = fullBoard[currentGuess[i]].getText().charAt(0);
+        }
+        guessWord = new String(guessCharList);
+        guessWindow.setText(guessWord);
     }
 }
